@@ -1,0 +1,21 @@
+.\" Manpage for chooser
+.TH man 1 "Janurary 2025" "Version 1.0" "chooser man page"
+.SH NAME
+chooser \- decide between a list of items
+.SH SYNOPSIS
+chooser -m METHOD [CHOICES]
+.SH DESCRIPTION
+Uses a method optionally defined by \-m to decide between a list of items passed as parameters.
+.SH OPTIONS
+.TP
+.B \-?
+Display help.
+.TP
+.B \-m METHOD
+Specify the method. Valid options are:
+.SH EXAMPLES
+.nf
+chooser apple potato carrot
+.fi
+.SH AUTHOR
+Joshua Beck (joshua.beck.0908@gmail.com)

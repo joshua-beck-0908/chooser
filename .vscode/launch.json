@@ -5,12 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Project",
-            "type": "python",
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "${env:VIRTUAL_ENV_MAIN}",
-            "console": "integratedTerminal",
-            "justMyCode": true
+            "program": "${workspaceFolder}/chooser",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "one fish",
+                "two fish",
+                "red fish",
+                "blue fish"
+            ],
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }

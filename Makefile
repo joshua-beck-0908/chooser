@@ -1,8 +1,25 @@
+CSTD = -std=c11
+WARN_FLAGS = -Wall -Wextra -pedantic
+LDFLAGS = 
+CFLAGS = $(CSTD) $(WARN_FLAGS) -g
 
-chooser: src/chooser.c
-	${CC} -o chooser src/chooser.c -g -Wall -Wextra -pedantic -O3
+SOURCE_DIR := src
+OBJECT_DIR := src
+OBJECTS := $(addprefix $(OBJECT_DIR)/, \
+	argument_parser.o errors.o selection_methods.o chooser.o)
+TARGET = chooser
 
-all: chooser
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $(TARGET) 
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+all: $(TARGET)  
 
 
 .PHONY: all
